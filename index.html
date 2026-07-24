@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bromy Tours & Travels – Rajkot's Trusted Travel Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A2B6B;
+    --navy-dark: #0f1a42;
+    --navy-light: #253480;
+    --orange: #F47B20;
+    --orange-light: #FF9A40;
+    --orange-dark: #D4650A;
+    --cream: #FFF8F0;
+    --white: #ffffff;
+    --gray: #6B7280;
+    --light-gray: #F3F4F6;
+    --text: #1a1a2e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
+    height: 72px; background: transparent; transition: all 0.4s ease;
+  }
+  nav.scrolled { background: var(--navy-dark); box-shadow: 0 4px 30px rgba(0,0,0,0.3); height: 62px; }
+  .logo-text { color: white; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; letter-spacing: 1px; }
+  .logo-text span { color: var(--orange); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; text-transform: uppercase; }
+  .nav-links a:hover { color: var(--orange-light); }
+  .nav-cta { background: var(--orange) !important; color: white !important; padding: 10px 24px; border-radius: 50px; font-weight: 600 !important; transition: background 0.3s, transform 0.2s !important; }
+  .nav-cta:hover { background: var(--orange-dark) !important; transform: translateY(-2px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 26px; height: 2px; background: white; border-radius: 2px; display: block; }
+
+  /* HERO */
+  .hero { height: 100vh; min-height: 700px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-dark); }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,14,35,0.88) 0%, rgba(26,43,107,0.72) 50%, rgba(10,14,35,0.92) 100%),
+      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover;
+    animation: heroZoom 14s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.07)} }
+  .particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .particle { position: absolute; border-radius: 50%; background: rgba(244,123,32,0.35); animation: floatUp linear infinite; }
+  @keyframes floatUp { 0%{transform:translateY(100vh) scale(0);opacity:0} 10%{opacity:1} 90%{opacity:0.4} 100%{transform:translateY(-80px) scale(1);opacity:0} }
+
+  .hero-content { position: relative; z-index: 2; text-align: center; color: white; padding: 90px 20px 0; max-width: 950px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(244,123,32,0.18); border: 1px solid rgba(244,123,32,0.45);
+    color: var(--orange-light); padding: 8px 20px; border-radius: 50px;
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 24px; animation: fadeUp 0.8s ease 0.2s both;
+  }
+  .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(48px, 8vw, 96px); font-weight: 900; line-height: 1; margin-bottom: 20px; animation: fadeUp 0.8s ease 0.4s both; }
+  .hero-title .accent { color: var(--orange); display: block; }
+  .hero-subtitle { font-size: 18px; font-weight: 300; opacity: 0.85; margin-bottom: 40px; line-height: 1.6; animation: fadeUp 0.8s ease 0.6s both; }
+
+  .hero-search {
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 20px;
+    padding: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.8s both;
+  }
+  .search-field { flex: 1; min-width: 150px; display: flex; flex-direction: column; gap: 4px; }
+  .search-field label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--orange-light); }
+  .search-field select, .search-field input { background: transparent; border: none; outline: none; color: white; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; width: 100%; }
+  .search-field select option { color: var(--text); background: white; }
+  .search-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+  .search-btn {
+    background: var(--orange); color: white; border: none; padding: 14px 28px;
+    border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer;
+    white-space: nowrap; transition: all 0.3s; display: flex; align-items: center; gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .search-btn:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(244,123,32,0.4); }
+
+  .hero-services {
+    background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.14); border-radius: 20px;
+    padding: 18px 14px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+    animation: fadeUp 0.8s ease 0.8s both;
+  }
+  .hero-service-item {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 14px 6px; border-radius: 14px; cursor: pointer; transition: all 0.3s;
+    color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 500; text-align: center;
+  }
+  .hero-service-item:hover { background: rgba(244,123,32,0.16); transform: translateY(-3px); color: white; }
+  .hsi-icon { font-size: 26px; }
+  @media (max-width: 900px) {
+    .hero-services { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .hero-services { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .hero-stats { display: flex; gap: 40px; justify-content: center; margin-top: 48px; animation: fadeUp 0.8s ease 1s both; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--orange); letter-spacing: 1px; }
+  .stat-label { font-size: 11px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+
+  .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; animation: fadeUp 1s ease 1.4s both; }
+  .scroll-hint span { display: block; color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .scroll-mouse { width: 24px; height: 38px; border: 2px solid rgba(255,255,255,0.3); border-radius: 12px; margin: 0 auto; position: relative; }
+  .scroll-mouse::after { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 3px; height: 8px; background: var(--orange); border-radius: 2px; animation: scrollDot 1.6s ease infinite; }
+  @keyframes scrollDot { 0%,100%{top:6px;opacity:1} 70%{top:18px;opacity:0} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(30px, 4vw, 52px); font-weight: 700; color: var(--navy); line-height: 1.15; }
+  .section-title span { color: var(--orange); }
+  .section-desc { font-size: 16px; color: var(--gray); line-height: 1.7; margin-top: 16px; max-width: 560px; }
+
+  /* SERVICES */
+  .services { background: var(--cream); }
+  .services-header { text-align: center; margin-bottom: 56px; }
+  .services-header .section-desc { margin: 16px auto 0; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+  .service-card {
+    background: white; border-radius: 20px; padding: 34px 26px;
+    position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer; border: 1px solid rgba(0,0,0,0.06);
+  }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--navy), var(--orange)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+  .service-card:hover { transform: translateY(-10px); box-shadow: 0 24px 60px rgba(26,43,107,0.14); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 58px; height: 58px; border-radius: 16px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; transition: transform 0.3s; }
+  .service-card:hover .service-icon { transform: scale(1.1) rotate(-5deg); }
+  .service-card h3 { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .service-card p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+  .service-arrow { display: inline-flex; align-items: center; gap: 6px; color: var(--orange); font-size: 13px; font-weight: 600; margin-top: 14px; text-decoration: none; transition: gap 0.3s; cursor: pointer; }
+  .service-card:hover .service-arrow { gap: 10px; }
+
+  /* ROUTES */
+  .routes-section { background: white; }
+  .cab-search-box {
+    background: var(--light-gray) !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    backdrop-filter: none !important;
+  }
+  .cab-search-box .search-field label { color: var(--orange-dark); }
+  .cab-search-box .search-field select,
+  .cab-search-box .search-field input { color: var(--text); }
+  .cab-search-box .search-field select option { color: var(--text); }
+  .cab-search-box .search-divider { background: rgba(0,0,0,0.1); }
+  .routes-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; align-items: start; }
+  .routes-tabs { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 90px; }
+  .route-tab { padding: 14px 18px; border-radius: 12px; cursor: pointer; transition: all 0.3s; border: 2px solid transparent; font-weight: 500; color: var(--gray); display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .route-tab.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .route-tab:not(.active):hover { border-color: var(--navy); color: var(--navy); background: var(--light-gray); }
+
+  .routes-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .route-card { background: var(--light-gray); border-radius: 16px; padding: 18px; transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; }
+  .route-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--navy), var(--navy-light)); opacity: 0; transition: opacity 0.3s; border-radius: 16px; }
+  .route-card:hover::after { opacity: 1; }
+  .route-card-content { position: relative; z-index: 1; }
+  .route-card:hover .city, .route-card:hover .route-dist, .route-card:hover .route-cab, .route-card:hover .route-price { color: white !important; }
+  .route-from-to { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .city { font-weight: 700; font-size: 15px; color: var(--navy); transition: color 0.3s; }
+  .arrow-right { color: var(--orange); font-size: 18px; }
+  .route-dist { font-size: 12px; color: var(--gray); margin-bottom: 8px; transition: color 0.3s; }
+  .route-price-row { display: flex; align-items: center; justify-content: space-between; }
+  .route-price { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--orange); transition: color 0.3s; }
+  .route-cab { font-size: 11px; color: var(--gray); transition: color 0.3s; }
+  .book-route-btn { background: var(--orange); color: white; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.3s; }
+  .book-route-btn:hover { background: var(--orange-dark); }
+
+  /* PACKAGES */
+  .packages { background: var(--navy-dark); position: relative; overflow: hidden; }
+  .packages::before { content: 'TRAVEL'; position: absolute; top: -30px; right: -20px; font-family: 'Bebas Neue', sans-serif; font-size: 200px; color: rgba(255,255,255,0.03); pointer-events: none; line-height: 1; }
+  .packages .section-title { color: white; }
+  .packages .section-desc { color: rgba(255,255,255,0.55); }
+  .packages-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
+  .pkg-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pkg-btn { padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 13px; font-weight: 500; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .pkg-btn.active, .pkg-btn:hover { background: var(--orange); border-color: var(--orange); color: white; }
+
+  .packages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+  .pkg-card { border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); transition: all 0.4s; cursor: pointer; }
+  .pkg-card:hover { transform: translateY(-8px); border-color: var(--orange); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .pkg-img {
+    /* Responsive height: fixed ratio so any image fits perfectly */
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a2c6b, #0d1730);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pkg-img-photo {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    /* cover = fills entire box, crops excess — works for ANY image size/ratio */
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.4s ease;
+  }
+  .pkg-card:hover .pkg-img-photo { transform: scale(1.06); }
+  .pkg-img-emoji {
+    font-size: 64px;
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .pkg-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,30,0.75) 0%, rgba(10,10,30,0.1) 50%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .pkg-badge { position: absolute; top: 14px; left: 14px; background: var(--orange); color: white; padding: 5px 13px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .pkg-badge.honeymoon { background: #e84393; }
+  .pkg-badge.adventure { background: #16a34a; }
+  .pkg-badge.domestic { background: var(--orange); }
+  .pkg-badge.international { background: #6366f1; }
+  .pkg-badge.pilgrimage { background: #a16207; }
+  .pkg-rating { position: absolute; bottom: 14px; right: 14px; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px); color: white; padding: 5px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+  .pkg-body { padding: 20px; }
+  .pkg-body h3 { font-size: 17px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .pkg-meta { display: flex; gap: 14px; margin-bottom: 12px; }
+  .pkg-meta span { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 4px; }
+  .pkg-includes { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .pkg-tag { background: rgba(244,123,32,0.14); color: var(--orange-light); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 500; }
+  .pkg-footer { display: flex; align-items: center; justify-content: space-between; }
+  .pkg-price .from { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .pkg-price .amount { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--orange); }
+  .pkg-price .per { font-size: 11px; color: rgba(255,255,255,0.4); }
+  .book-btn { background: var(--orange); color: white; border: none; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .book-btn:hover { background: var(--orange-dark); transform: scale(1.05); }
+
+  /* HONEYMOON */
+  .honeymoon-banner { padding: 90px 5%; background: linear-gradient(135deg, #1a0a2e 0%, #2d1560 50%, #1a0a2e 100%); position: relative; overflow: hidden; }
+  .honeymoon-banner::before { content: ''; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=80') center/cover; opacity: 0.12; }
+  .hb-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hb-text .section-label { color: #f9a8d4; }
+  .hb-text .section-title { color: white; }
+  .hb-text .section-desc { color: rgba(255,255,255,0.6); }
+  .hb-features { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .hb-feat { display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.85); font-size: 15px; }
+  .hb-feat-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(233,100,172,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .hb-cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; background: linear-gradient(135deg, #e84393, #a855f7); color: white; padding: 16px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; box-shadow: 0 8px 28px rgba(232,67,147,0.4); cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; }
+  .hb-cta:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(232,67,147,0.5); }
+  .hb-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .hb-dest-card { border-radius: 16px; overflow: hidden; position: relative; aspect-ratio: 1; cursor: pointer; transition: transform 0.4s; }
+  .hb-dest-card:first-child { grid-column: span 2; aspect-ratio: 2/1; }
+  .hb-dest-card:hover { transform: scale(1.02); }
+  .hb-dest-card img { width: 100%; height: 100%; object-fit: cover; }
+  .hb-dest-card::after { content: attr(data-name); position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 16px 14px; background: linear-gradient(transparent, rgba(0,0,0,0.72)); color: white; font-weight: 600; font-size: 14px; }
+
+  /* WHY US */
+  .why-us { background: var(--light-gray); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .why-visual { position: relative; border-radius: 24px; overflow: hidden; }
+  .why-visual img { width: 100%; border-radius: 24px; display: block; }
+  .why-badge-float { position: absolute; bottom: 22px; left: 22px; background: white; border-radius: 16px; padding: 14px 18px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; }
+  .why-badge-icon { font-size: 30px; }
+  .why-badge-num { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--navy); }
+  .why-badge-label { font-size: 12px; color: var(--gray); }
+  .why-items { display: flex; flex-direction: column; gap: 22px; margin-top: 30px; }
+  .why-item { display: flex; gap: 16px; align-items: flex-start; }
+  .why-num { width: 44px; height: 44px; border-radius: 12px; background: var(--navy); color: var(--orange); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 20px; flex-shrink: 0; }
+  .why-item h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .why-item p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: white; }
+  .testimonials-header { text-align: center; margin-bottom: 48px; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+  .testi-card { background: var(--light-gray); border-radius: 20px; padding: 26px; position: relative; transition: all 0.3s; border: 2px solid transparent; }
+  .testi-card:hover { border-color: var(--orange); background: white; box-shadow: 0 12px 40px rgba(244,123,32,0.1); }
+  .testi-quote { font-size: 48px; color: var(--orange); line-height: 1; font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+  .testi-text { font-size: 14px; line-height: 1.7; color: var(--gray); margin-bottom: 18px; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--orange)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+  .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+  .testi-loc { font-size: 12px; color: var(--gray); }
+  .testi-stars { color: #FBBF24; font-size: 13px; margin-top: 2px; }
+
+  /* CONTACT */
+  .contact { background: var(--navy-dark); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .contact-text .section-title { color: white; }
+  .contact-info { margin-top: 34px; display: flex; flex-direction: column; gap: 18px; }
+  .contact-item { display: flex; align-items: center; gap: 14px; }
+  .contact-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(244,123,32,0.15); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .contact-item-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+  .contact-item-val { font-size: 15px; color: white; font-weight: 500; }
+
+  .contact-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 34px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .form-group label { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+  .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 16px; color: white; font-family: 'DM Sans', sans-serif; font-size: 14px; transition: border-color 0.3s; outline: none; width: 100%; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--orange); }
+  .form-group select option { background: var(--navy-dark); color: white; }
+  .form-group textarea { resize: none; height: 90px; }
+  .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(244,123,32,0.4); }
+
+  /* FOOTER */
+  footer { background: #060912; padding: 60px 5% 22px; color: rgba(255,255,255,0.5); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 14px; max-width: 280px; }
+  .footer-logo-text { color: white; font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+  .footer-logo-text span { color: var(--orange); }
+  .footer-social { display: flex; gap: 10px; margin-top: 18px; }
+  .social-btn { width: 38px; height: 38px; border-radius: 10px; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: all 0.3s; font-weight: 700; }
+  .social-btn:hover { background: var(--orange); color: white; }
+  .footer-col h4 { color: white; font-size: 13px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: color 0.3s; }
+  .footer-col ul li a:hover { color: var(--orange); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .footer-bottom p { font-size: 13px; }
+  .footer-bottom a { color: var(--orange); text-decoration: none; }
+
+  /* WHATSAPP */
+  .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 58px; height: 58px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.5); text-decoration: none; font-size: 26px; transition: all 0.3s; animation: waPulse 2.5s ease infinite; }
+  .wa-float:hover { transform: scale(1.12); }
+  @keyframes waPulse { 0%,100%{box-shadow:0 6px 24px rgba(37,211,102,0.5)} 50%{box-shadow:0 6px 40px rgba(37,211,102,0.8)} }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(36px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+  .reveal-d4 { transition-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .routes-layout { grid-template-columns: 1fr; }
+    .routes-tabs { flex-direction: row; flex-wrap: wrap; position: static; }
+    .hb-inner { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .routes-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 60px 5%; }
+    .hero-search { flex-direction: column; }
+    .search-divider { width: 100%; height: 1px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hb-cards { grid-template-columns: 1fr; }
+    .hb-dest-card:first-child { grid-column: auto; aspect-ratio: 16/9; }
+    .hero-stats { gap: 20px; }
+    .stat-num { font-size: 30px; }
+  }
+
+  /* Mobile Nav */
+  .mobile-nav { display: none; position: fixed; top: 62px; left: 0; right: 0; background: var(--navy-dark); padding: 16px 5%; z-index: 998; flex-direction: column; gap: 4px; }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a { color: rgba(255,255,255,0.85); text-decoration: none; padding: 12px 0; font-size: 15px; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .mobile-nav a:last-child { border: none; color: var(--orange); font-weight: 700; }
+
+/* ── BOOKING MODAL ── */
+.bmodal-overlay {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.75); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center; padding:20px;
+}
+.bmodal-overlay.open { display:flex; }
+.bmodal {
+  background:#1a1d2e; border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px; padding:32px; width:100%; max-width:520px;
+  max-height:90vh; overflow-y:auto;
+  animation:bmodalIn 0.25s ease;
+  position:relative;
+}
+@keyframes bmodalIn {
+  from { opacity:0; transform:translateY(30px) scale(0.97); }
+  to   { opacity:1; transform:translateY(0) scale(1); }
+}
+.bmodal-close {
+  position:absolute; top:16px; right:16px;
+  background:rgba(255,255,255,0.08); border:none; color:white;
+  width:32px; height:32px; border-radius:50%; cursor:pointer;
+  font-size:16px; display:flex; align-items:center; justify-content:center;
+  transition:background 0.2s;
+}
+.bmodal-close:hover { background:rgba(255,255,255,0.15); }
+.bmodal-icon { font-size:36px; margin-bottom:10px; }
+.bmodal h3 { font-size:20px; font-weight:700; color:white; margin-bottom:4px; }
+.bmodal-sub { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:22px; }
+.bmodal-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.bmodal-group { margin-bottom:14px; }
+.bmodal-group label { display:block; font-size:11px; font-weight:600; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px; }
+.bmodal-group input,
+.bmodal-group select,
+.bmodal-group textarea {
+  width:100%; padding:10px 14px;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px; color:white;
+  font-family:'DM Sans',sans-serif; font-size:14px; outline:none;
+  transition:border 0.2s;
+}
+.bmodal-group input:focus,
+.bmodal-group select,
+.bmodal-group select:focus,
+.bmodal-group textarea:focus { border-color:var(--orange); background:rgba(255,255,255,0.09); }
+.bmodal-group select option { background:#1a1d2e; color:white; }
+.bmodal-group textarea { resize:vertical; min-height:70px; }
+.bmodal-submit {
+  width:100%; padding:13px; border-radius:12px;
+  background:var(--orange); color:white; border:none;
+  font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700;
+  cursor:pointer; transition:all 0.3s; margin-top:4px;
+  box-shadow:0 4px 20px rgba(244,124,32,0.35);
+}
+.bmodal-submit:hover { background:#ff9f45; transform:translateY(-1px); }
+.bmodal-submit:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+.bmodal-success {
+  display:none; text-align:center; padding:16px 0;
+}
+.bmodal-success .tick { font-size:48px; margin-bottom:10px; }
+.bmodal-success h4 { font-size:18px; color:#4ade80; font-weight:700; margin-bottom:6px; }
+.bmodal-success p { font-size:13px; color:rgba(255,255,255,0.5); }
+.bmodal-wa {
+  display:inline-flex; align-items:center; gap:8px;
+  background:#25d366; color:white; padding:10px 22px;
+  border-radius:50px; font-weight:600; font-size:14px;
+  text-decoration:none; margin-top:14px; transition:all 0.3s;
+}
+.bmodal-wa:hover { background:#1fba57; transform:translateY(-2px); }
+.required-note { font-size:11px; color:rgba(255,255,255,0.3); margin-top:10px; }
+
+
+/* ── SEARCH RESULTS ── */
+.sresult-overlay {
+  display:none; position:fixed; inset:0; z-index:8999;
+  background:rgba(0,0,0,0.78); backdrop-filter:blur(6px);
+  align-items:flex-start; justify-content:center;
+  padding:80px 20px 20px; overflow-y:auto;
+}
+.sresult-overlay.open { display:flex; }
+.sresult-box {
+  background:#1a1d2e; border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px; width:100%; max-width:700px;
+  animation:bmodalIn 0.25s ease; overflow:hidden;
+}
+.sresult-header {
+  padding:24px 28px 16px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.sresult-header h3 { font-size:18px; font-weight:700; color:white; }
+.sresult-header p { font-size:13px; color:rgba(255,255,255,0.45); margin-top:3px; }
+.sresult-close {
+  background:rgba(255,255,255,0.08); border:none; color:white;
+  width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:16px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.sresult-close:hover { background:rgba(255,255,255,0.15); }
+.sresult-list { padding:16px 20px; display:flex; flex-direction:column; gap:12px; }
+.sresult-item {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px; padding:18px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  transition:all 0.2s;
+}
+.sresult-item:hover { background:rgba(244,124,32,0.1); border-color:rgba(244,124,32,0.3); }
+.sresult-route { font-size:16px; font-weight:700; color:white; }
+.sresult-meta { font-size:12px; color:rgba(255,255,255,0.45); margin-top:4px; }
+.sresult-price-col { text-align:right; }
+.sresult-price { font-size:22px; font-weight:800; color:var(--orange); }
+.sresult-rt { font-size:11px; color:rgba(255,255,255,0.4); margin-top:2px; }
+.sresult-book {
+  background:var(--orange); color:white; border:none;
+  padding:10px 20px; border-radius:10px; cursor:pointer;
+  font-family:'DM Sans',sans-serif; font-size:13px; font-weight:700;
+  white-space:nowrap; transition:all 0.2s; flex-shrink:0;
+}
+.sresult-book:hover { background:#ff9a40; transform:translateY(-1px); }
+.sresult-empty { text-align:center; padding:40px; color:rgba(255,255,255,0.4); font-size:14px; }
+.sresult-tag {
+  display:inline-block; background:rgba(244,124,32,0.15);
+  color:var(--orange); font-size:10px; font-weight:600;
+  padding:2px 8px; border-radius:20px; margin-left:8px;
+  vertical-align:middle; letter-spacing:0.5px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo-text"><span>BROMY</span> TRAVELS</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#routes">Cab Routes</a></li>
+    <li><a href="#honeymoon">Honeymoon</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="closeMobileNav()">Services</a>
+  <a href="#packages" onclick="closeMobileNav()">Holiday Packages</a>
+  <a href="#routes" onclick="closeMobileNav()">Cab Routes & Prices</a>
+  <a href="#honeymoon" onclick="closeMobileNav()">Honeymoon Special</a>
+  <a href="#contact" onclick="closeMobileNav()">📞 Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✈️ Gujarat's Premier Travel Partner</div>
+    <h1 class="hero-title">
+      Discover India
+      <span class="accent">With Comfort</span>
+    </h1>
+    <p class="hero-subtitle">
+      Rajkot-based cab services, holiday packages & honeymoon specials.<br>
+      Trusted by thousands of happy travelers across Gujarat.
+    </p>
+    <div class="hero-services">
+      <div class="hero-service-item" onclick="scrollTo('routes')"><span class="hsi-icon">🚕</span><span>Taxi Service</span></div>
+      <div class="hero-service-item" onclick="filterPkgs('domestic', document.querySelectorAll('.pkg-btn')[1]);scrollTo('packages')"><span class="hsi-icon">🏖️</span><span>Domestic Package</span></div>
+      <div class="hero-service-item" onclick="scrollTo('packages')"><span class="hsi-icon">🌍</span><span>International Package</span></div>
+      <div class="hero-service-item" onclick="scrollTo('packages')"><span class="hsi-icon">🕌</span><span>Pilgrim Tours</span></div>
+      <div class="hero-service-item" onclick="openBookingModal('cab', {to:'Corporate & MICE Group'})"><span class="hsi-icon">🚐</span><span>Corporate & MICE</span></div>
+      <div class="hero-service-item" onclick="openBookingModal('passport', {})"><span class="hsi-icon">🛂</span><span>Passport & Visa</span></div>
+      <div class="hero-service-item" onclick="openBookingModal('flight', {})"><span class="hsi-icon">✈️</span><span>Flight Booking</span></div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">5000+</div><div class="stat-label">Happy Travelers</div></div>
+      <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Destinations</div></div>
+      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Support</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll Down</span>
+    <div class="scroll-mouse"></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Complete Travel <span>Solutions</span></h2>
+    <p class="section-desc">From a quick city cab to a dream honeymoon, Bromy Tours & Travels has you covered at every step of your journey.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-d1">
+      <div class="service-icon">🚕</div>
+      <h3>Taxi Service</h3>
+      <p>AC & Non-AC cabs for local & intercity travel across Gujarat and beyond. One-way & round trips at transparent prices.</p>
+      <div class="service-arrow" onclick="scrollTo('routes')">Explore Routes →</div>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <div class="service-icon">🏖️</div>
+      <h3>Domestic Package</h3>
+      <p>Curated Gujarat & all-India holiday packages with hotel, transport & sightseeing all included.</p>
+      <div class="service-arrow" onclick="filterPkgs('domestic', document.querySelectorAll('.pkg-btn')[1]);scrollTo('packages')">View Packages →</div>
+    </div>
+    <div class="service-card reveal reveal-d3">
+      <div class="service-icon">🌍</div>
+      <h3>International Package</h3>
+      <p>Handpicked overseas holidays — Dubai, Singapore, Bali & more — with visa, stay and sightseeing bundled in.</p>
+      <div class="service-arrow" onclick="scrollTo('packages')">View Packages →</div>
+    </div>
+    <div class="service-card reveal reveal-d4">
+      <div class="service-icon">🕌</div>
+      <h3>Pilgrim Tours</h3>
+      <p>Sacred tours to Somnath, Dwarka, Ambaji, Dakor and other holy sites across Gujarat and India.</p>
+      <div class="service-arrow" onclick="scrollTo('packages')">See Pilgrimages →</div>
+    </div>
+    <div class="service-card reveal reveal-d1">
+      <div class="service-icon">🚐</div>
+      <h3>Corporate & MICE Group</h3>
+      <p>Tempo travellers & bus hire for corporate events, offsites, MICE groups and family functions across India.</p>
+      <div class="service-arrow" onclick="openBookingModal('cab', {to:'Corporate & MICE Group'})">Get Quote →</div>
+    </div>
+    <div class="service-card reveal reveal-d2">
+      <div class="service-icon">🛂</div>
+      <h3>Passport & Visa Assistance</h3>
+      <p>End-to-end help with passport applications, renewals and visa processing for your next trip.</p>
+      <div class="service-arrow" onclick="openBookingModal('passport', {})">Get Assistance →</div>
+    </div>
+    <div class="service-card reveal reveal-d3">
+      <div class="service-icon">✈️</div>
+      <h3>Flight Booking</h3>
+      <p>Domestic & international flight bookings at the best available fares, handled entirely for you.</p>
+      <div class="service-arrow" onclick="openBookingModal('flight', {})">Book Flight →</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="packages-header">
+    <div>
+      <div class="section-label">Travel Packages</div>
+      <h2 class="section-title reveal">Holiday <span>Packages</span></h2>
+      <p class="section-desc reveal">All-inclusive packages curated for Gujarat and beyond. Everything taken care of.</p>
+    </div>
+    <div class="pkg-filter reveal">
+      <button class="pkg-btn active" onclick="filterPkgs('all',this)">All</button>
+      <button class="pkg-btn" onclick="filterPkgs('domestic',this)">Domestic</button>
+      <button class="pkg-btn" onclick="filterPkgs('international',this)">International</button>
+      <button class="pkg-btn" onclick="filterPkgs('pilgrimage',this)">Pilgrimage</button>
+    </div>
+  </div>
+  <div class="packages-grid" id="packagesGrid"></div>
+
+  <div id="gujaratSpecialWrap" style="display:none;margin-top:56px">
+    <div class="section-label reveal" style="color:#f9a8d4">⭐ Featured</div>
+    <h3 class="reveal" style="font-family:'Playfair Display',serif;font-size:26px;color:white;margin-bottom:20px">Special <span style="color:var(--orange)">Gujarat Packages</span></h3>
+    <div class="packages-grid" id="gujaratSpecialGrid"></div>
+  </div>
+</section>
+
+<!-- ROUTES -->
+<section class="routes-section" id="routes">
+  <div class="section-label reveal" style="text-align:center">Cab Routes & Pricing</div>
+  <h2 class="section-title reveal" style="text-align:center">Search & Book Your <span>Cab</span></h2>
+  <p class="section-desc reveal" style="text-align:center;margin:16px auto 0">Transparent pricing, no hidden charges. All prices shown are per trip (one-way basis).</p>
+
+  <div class="hero-search cab-search-box reveal" style="margin:36px auto 0;max-width:1000px">
+    <div class="search-field">
+      <label>From</label>
+      <select id="s-from">
+        <option value="Rajkot">Rajkot</option>
+        <option value="Ahmedabad">Ahmedabad</option>
+        <option value="Surat">Surat</option>
+        <option value="Jamnagar">Jamnagar</option>
+      </select>
+    </div>
+    <div class="search-divider"></div>
+    <div class="search-field">
+      <label>To</label>
+      <select id="s-to">
+        <option value="">Select Destination</option>
+        <option value="Ahmedabad">Ahmedabad</option>
+        <option value="Somnath">Somnath</option>
+        <option value="Dwarka">Dwarka</option>
+        <option value="Gir Forest">Gir Forest</option>
+        <option value="Surat">Surat</option>
+        <option value="Jamnagar">Jamnagar</option>
+        <option value="Vadodara">Vadodara</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Udaipur">Udaipur</option>
+        <option value="Rann of Kutch">Rann of Kutch</option>
+        <option value="Ambaji">Ambaji</option>
+        <option value="Dakor">Dakor</option>
+      </select>
+    </div>
+    <div class="search-divider"></div>
+    <div class="search-field">
+      <label>Travel Date</label>
+      <input type="date" id="s-date">
+    </div>
+    <div class="search-divider"></div>
+    <div class="search-field">
+      <label>Cab Type</label>
+      <select id="s-cab">
+        <option value="">Any Cab</option>
+        <option value="Sedan">Sedan</option>
+        <option value="SUV">SUV</option>
+        <option value="Tempo Traveller">Tempo Traveller</option>
+        <option value="Luxury">Luxury</option>
+      </select>
+    </div>
+    <button class="search-btn" onclick="searchCabs()">🔍 Search Cabs</button>
+  </div>
+
+  <div class="routes-tabs reveal" id="routeTabs" style="flex-direction:row;justify-content:center;flex-wrap:wrap;margin:28px 0;position:static">
+    <div class="route-tab active" onclick="filterRoutes('all',this)">🗺️ All Routes</div>
+    <div class="route-tab" onclick="filterRoutes('gujarat',this)">🏛️ Gujarat</div>
+    <div class="route-tab" onclick="filterRoutes('religious',this)">🕌 Pilgrimage</div>
+    <div class="route-tab" onclick="filterRoutes('outstate',this)">🚀 Out of State</div>
+  </div>
+  <div class="routes-cards" id="routeCards" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))"></div>
+</section>
+
+<!-- HONEYMOON -->
+<section class="honeymoon-banner" id="honeymoon">
+  <div class="hb-inner">
+    <div class="hb-text reveal">
+      <div class="section-label">💕 Honeymoon Specials</div>
+      <h2 class="section-title">Your Dream<br>Honeymoon <span style="color:#f9a8d4">Awaits</span></h2>
+      <p class="section-desc">Let us craft the most magical beginning to your forever. Personalised, romantic and stress-free honeymoon packages designed just for you.</p>
+      <div class="hb-features">
+        <div class="hb-feat"><div class="hb-feat-icon">🏨</div> Handpicked luxury & boutique hotels</div>
+        <div class="hb-feat"><div class="hb-feat-icon">🌹</div> Surprise room decorations & candlelit dinners</div>
+        <div class="hb-feat"><div class="hb-feat-icon">🚗</div> Private cab with professional chauffeur</div>
+        <div class="hb-feat"><div class="hb-feat-icon">📸</div> Complimentary couple photoshoot</div>
+        <div class="hb-feat"><div class="hb-feat-icon">🎯</div> Fully customisable itinerary</div>
+      </div>
+      <button class="hb-cta" onclick="openBookingModal('honeymoon')">Plan My Honeymoon 💕</button>
+    </div>
+    <div class="hb-cards reveal">
+      <div class="hb-dest-card" data-name="🌊 Goa – Beach Romance">
+        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=700&q=80" alt="Goa">
+      </div>
+      <div class="hb-dest-card" data-name="🏔️ Manali – Snow & Love">
+        <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=400&q=80" alt="Manali">
+      </div>
+      <div class="hb-dest-card" data-name="🏰 Udaipur – City of Lakes">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80" alt="Udaipur">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="about">
+  <div class="why-grid">
+    <div class="why-visual reveal">
+      <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&q=80" alt="Our Fleet">
+      <div class="why-badge-float">
+        <div class="why-badge-icon">🏆</div>
+        <div>
+          <div class="why-badge-num">Rajkot's #1</div>
+          <div class="why-badge-label">Travel Company</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label reveal">Why Choose Us</div>
+      <h2 class="section-title reveal">Travel Better with<br><span>Bromy Travels</span></h2>
+      <p class="section-desc reveal">We've been Gujarat's trusted travel partner since 2016. Here's what sets us apart from the rest.</p>
+      <div class="why-items">
+        <div class="why-item reveal reveal-d1">
+          <div class="why-num">01</div>
+          <div><h4>Transparent Pricing</h4><p>No hidden charges, no surge pricing. What you see is exactly what you pay — always.</p></div>
+        </div>
+        <div class="why-item reveal reveal-d2">
+          <div class="why-num">02</div>
+          <div><h4>Verified Professional Drivers</h4><p>All our drivers are police-verified, trained and know every road across Gujarat.</p></div>
+        </div>
+        <div class="why-item reveal reveal-d3">
+          <div class="why-num">03</div>
+          <div><h4>Well-Maintained Fleet</h4><p>From hatchbacks to tempo travellers — all fully AC, clean and GPS-tracked vehicles.</p></div>
+        </div>
+        <div class="why-item reveal reveal-d4">
+          <div class="why-num">04</div>
+          <div><h4>24/7 Customer Support</h4><p>WhatsApp, call or email — our team is always just a message away for you.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="testimonials-header">
+    <div class="section-label reveal">Customer Stories</div>
+    <h2 class="section-title reveal">What Our <span>Travelers Say</span></h2>
+  </div>
+  <div class="testi-grid" id="testiGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label" style="color:var(--orange)">Get In Touch</div>
+      <h2 class="section-title" style="color:white">Book Your <span style="color:var(--orange)">Perfect Trip</span></h2>
+      <p style="font-size:16px;color:rgba(255,255,255,0.6);line-height:1.7;margin-top:16px;max-width:480px">Fill in your details and our travel expert will call you back within 30 minutes.</p>
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><div class="contact-item-label">Call / WhatsApp</div><div class="contact-item-val">+91 98765 43210</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><div class="contact-item-label">Email Us</div><div class="contact-item-val">info@bromytravels.com</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><div class="contact-item-label">Office</div><div class="contact-item-val">Rajkot, Gujarat – 360001</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div><div class="contact-item-label">Working Hours</div><div class="contact-item-val">24 Hours, 7 Days a Week</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3 style="color:white; font-size:20px; font-weight:700; margin-bottom:6px" id="formTitle">Request a Callback</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:20px" id="formSubtitle">Fill the form and we'll call you within 30 minutes</p>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input id="f-name" type="text" placeholder="Your name"></div>
+        <div class="form-group"><label>Phone Number *</label><input id="f-phone" type="tel" placeholder="+91 XXXXX XXXXX"></div>
+      </div>
+      <div class="form-group">
+        <label>Service Required</label>
+        <select id="f-service">
+          <option value="">Select Service</option>
+          <option value="cab">Taxi Service</option>
+          <option value="package">Domestic Package</option>
+          <option value="package">International Package</option>
+          <option value="package">Pilgrim Tours</option>
+          <option value="cab">Corporate & MICE Group</option>
+          <option value="passport">Passport & Visa Assistance</option>
+          <option value="flight">Flight Booking</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>From City</label><input id="f-from" type="text" placeholder="Rajkot" value="Rajkot"></div>
+        <div class="form-group"><label>To Destination</label><input id="f-to" type="text" placeholder="Destination"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Travel Date</label><input id="f-date" type="date"></div>
+        <div class="form-group"><label>No. of Persons</label><input id="f-pax" type="number" placeholder="2" min="1" value="2"></div>
+      </div>
+      <div class="form-group">
+        <label>Message / Special Request</label>
+        <textarea id="f-msg" placeholder="Tell us about your trip, preferences, budget..."></textarea>
+      </div>
+      <div id="formSuccess" style="display:none;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:14px;text-align:center;margin-bottom:14px">
+        <div style="font-size:24px;margin-bottom:6px">✅</div>
+        <div style="font-weight:700;color:#4ade80">Booking Request Sent!</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px">Our team will call you within 30 minutes.</div>
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">📩 Send Booking Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo-text"><span>BROMY</span> TRAVELS</div>
+      <p>Your trusted travel partner in Rajkot, Gujarat. Cab services, holiday packages, honeymoon specials and more — all under one roof since 2016.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" title="Facebook">f</a>
+        <a class="social-btn" href="#" title="Instagram">📷</a>
+        <a class="social-btn" href="#" title="WhatsApp">💬</a>
+        <a class="social-btn" href="#" title="YouTube">▶</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#routes">Outstation Cabs</a></li>
+        <li><a href="#packages">Holiday Packages</a></li>
+        <li><a href="#honeymoon">Honeymoon Tours</a></li>
+        <li><a href="#services">Airport Transfers</a></li>
+        <li><a href="#services">Pilgrimage Tours</a></li>
+        <li><a href="#services">Corporate Travel</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Top Routes</h4>
+      <ul>
+        <li><a href="#">Rajkot → Ahmedabad</a></li>
+        <li><a href="#">Rajkot → Somnath</a></li>
+        <li><a href="#">Rajkot → Dwarka</a></li>
+        <li><a href="#">Rajkot → Surat</a></li>
+        <li><a href="#">Rajkot → Mumbai</a></li>
+        <li><a href="#">Rajkot → Udaipur</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#reviews">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Bromy Tours & Travels. All rights reserved. Made with ❤️ in Rajkot, Gujarat.</p>
+    <p>Built for <a href="#">Bromy Travels</a></p>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a class="wa-float" href="https://wa.me/919876543210" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// MOBILE NAV
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+// PARTICLES
+(function() {
+  const c = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const s = Math.random() * 6 + 2;
+    p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*10+8}s;animation-delay:${Math.random()*8}s;`;
+    c.appendChild(p);
+  }
+})();
+
+// SCROLL REVEAL
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── SEARCH CABS ──
+function searchCabs() {
+  const from    = document.getElementById('s-from').value;
+  const to      = document.getElementById('s-to').value;
+  const date    = document.getElementById('s-date').value;
+  const cabType = document.getElementById('s-cab').value;
+
+  if (!to) {
+    // No destination — scroll to routes and highlight
+    scrollTo('routes');
+    return;
+  }
+
+  // Filter routes from loaded data
+  let results = allRoutes.filter(r => {
+    const fromMatch = r.from_city.toLowerCase() === from.toLowerCase();
+    const toMatch   = !to || r.to_city.toLowerCase().includes(to.toLowerCase()) || to.toLowerCase().includes(r.to_city.toLowerCase());
+    return fromMatch && toMatch;
+  });
+
+  // If no exact match, find anything going to that destination
+  if (!results.length) {
+    results = allRoutes.filter(r =>
+      r.to_city.toLowerCase().includes(to.toLowerCase()) ||
+      to.toLowerCase().includes(r.to_city.toLowerCase())
+    );
+  }
+
+  const cabTypes = [
+    { type: 'Sedan',           icon: '🚗', seats: '1-4', rate: 1.0,  desc: 'Swift Dzire / Honda Amaze' },
+    { type: 'SUV',             icon: '🚙', seats: '1-6', rate: 1.4,  desc: 'Ertiga / Innova Crysta' },
+    { type: 'Tempo Traveller', icon: '🚐', seats: '7-17', rate: 2.0, desc: '12-17 Seater' },
+    { type: 'Luxury',          icon: '🏎️', seats: '1-5', rate: 2.2,  desc: 'Toyota Fortuner / Crysta' },
+  ];
+
+  // Build result rows
+  const overlay = document.getElementById('searchResultOverlay');
+  const list    = document.getElementById('sresultList');
+  const title   = document.getElementById('sresultTitle');
+  const sub     = document.getElementById('sresultSub');
+
+  const dateStr = date ? new Date(date).toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'}) : 'Flexible Date';
+  title.textContent = from + ' → ' + to;
+  sub.textContent   = dateStr + ' · Select your cab type';
+
+  if (!results.length) {
+    // No route in DB — show standard pricing for the requested destination
+    const distKm = 200; // default estimate
+    list.innerHTML = cabTypes
+      .filter(c => !cabType || c.type === cabType || cabType === '')
+      .map(c => {
+        const price = Math.round(distKm * 10 * c.rate / 100) * 100;
+        return buildResultRow(c, from, to, price, Math.round(price * 1.7), date);
+      }).join('') +
+      '<div style="padding:12px 20px;font-size:12px;color:rgba(255,255,255,0.35);text-align:center">Prices are estimates. Final price confirmed on booking call.</div>';
+  } else {
+    const route = results[0];
+    list.innerHTML = cabTypes
+      .filter(c => !cabType || c.type === cabType || cabType === '')
+      .map(c => {
+        const price = Math.round((route.price_oneway || 2000) * c.rate);
+        const rtPrice = Math.round((route.price_roundtrip || price * 1.8) * c.rate);
+        return buildResultRow(c, route.from_city, route.to_city, price, rtPrice, date);
+      }).join('') +
+      `<div style="padding:12px 20px;font-size:12px;color:rgba(255,255,255,0.35);text-align:center">📍 ${route.distance_km || '—'} km · ${route.duration_hrs || '—'} · Transparent pricing, no hidden charges</div>`;
+  }
+
+  overlay.classList.add('open');
+}
+
+function buildResultRow(cab, from, to, price, rtPrice, date) {
+  return `<div class="sresult-item">
+    <div style="font-size:28px;flex-shrink:0">${cab.icon}</div>
+    <div style="flex:1">
+      <div class="sresult-route">${cab.type} <span class="sresult-tag">${cab.seats} persons</span></div>
+      <div class="sresult-meta">${cab.desc} · ${from} → ${to}${date ? ' · ' + new Date(date).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : ''}</div>
+    </div>
+    <div class="sresult-price-col">
+      <div class="sresult-price">₹${price.toLocaleString('en-IN')}</div>
+      <div class="sresult-rt">Round Trip ₹${rtPrice.toLocaleString('en-IN')}</div>
+    </div>
+    <button class="sresult-book" onclick="bookFromSearch('${cab.type}','${from}','${to}','${date}','${price}')">Book Now</button>
+  </div>`;
+}
+
+function bookFromSearch(cabType, from, to, date, price) {
+  closeSearchResults();
+  // Pre-fill booking modal
+  openBookingModal('cab', { from, to });
+  // Set extra fields after modal opens
+  setTimeout(() => {
+    const vEl = document.getElementById('bm-vehicle');
+    const dEl = document.getElementById('bm-date');
+    const mEl = document.getElementById('bm-msg');
+    if (vEl) vEl.value = cabType;
+    if (dEl && date) dEl.value = date;
+    if (mEl) mEl.value = cabType + ' from ' + from + ' to ' + to + '. Quoted price: Rs.' + price;
+  }, 100);
+}
+
+function closeSearchResults() {
+  document.getElementById('searchResultOverlay').classList.remove('open');
+}
+
+// ── SUPABASE CONFIG ──
+const SB_URL = 'https://gxwxykgaupqxublrpojl.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3h5a2dhdXBxeHVibHJwb2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxMDA2OTIsImV4cCI6MjA5MjY3NjY5Mn0.Al1VZla5nK64rbaINvXAj3W03hUSwmE0jwQrqgkt4gc';
+
+async function sbGet(table, query='') {
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/${table}?${query}`, {
+      headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}` }
+    });
+    return r.ok ? r.json() : [];
+  } catch(e) { return []; }
+}
+
+async function sbPost(table, body) {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: {
+      'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}`,
+      'Content-Type': 'application/json', 'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(body)
+  });
+  return r.ok ? r.json() : null;
+}
+
+// ── ROUTES (live from Supabase) ──
+let allRoutes = [];
+let currentRouteFilter = 'all';
+
+async function loadRoutes() {
+  document.getElementById('routeCards').innerHTML = `<div style="text-align:center;padding:40px;color:#888;grid-column:1/-1">Loading routes... ⏳</div>`;
+  allRoutes = await sbGet('cab_routes', 'is_active=eq.true&order=from_city.asc');
+  if (!allRoutes.length) {
+    // fallback static data
+    allRoutes = [
+      { from_city:'Rajkot', to_city:'Ahmedabad', distance_km:220, price_oneway:2800, price_roundtrip:4800, duration_hrs:'3.5 hrs' },
+      { from_city:'Rajkot', to_city:'Somnath', distance_km:170, price_oneway:2200, price_roundtrip:3800, duration_hrs:'3 hrs' },
+      { from_city:'Rajkot', to_city:'Dwarka', distance_km:145, price_oneway:2000, price_roundtrip:3500, duration_hrs:'2.5 hrs' },
+      { from_city:'Rajkot', to_city:'Jamnagar', distance_km:90, price_oneway:1400, price_roundtrip:2400, duration_hrs:'1.5 hrs' },
+      { from_city:'Rajkot', to_city:'Gir Forest', distance_km:160, price_oneway:2100, price_roundtrip:3600, duration_hrs:'2.5 hrs' },
+      { from_city:'Rajkot', to_city:'Surat', distance_km:340, price_oneway:4200, price_roundtrip:7200, duration_hrs:'5.5 hrs' },
+      { from_city:'Rajkot', to_city:'Vadodara', distance_km:300, price_oneway:3800, price_roundtrip:6600, duration_hrs:'5 hrs' },
+      { from_city:'Rajkot', to_city:'Rann of Kutch', distance_km:250, price_oneway:3200, price_roundtrip:5500, duration_hrs:'4 hrs' },
+      { from_city:'Rajkot', to_city:'Mumbai', distance_km:640, price_oneway:8500, price_roundtrip:15000, duration_hrs:'10 hrs' },
+      { from_city:'Rajkot', to_city:'Udaipur', distance_km:420, price_oneway:5500, price_roundtrip:9500, duration_hrs:'7 hrs' },
+      { from_city:'Rajkot', to_city:'Ambaji', distance_km:290, price_oneway:3600, price_roundtrip:6200, duration_hrs:'5 hrs' },
+      { from_city:'Rajkot', to_city:'Dakor', distance_km:300, price_oneway:3700, price_roundtrip:6400, duration_hrs:'5 hrs' },
+    ];
+  }
+  renderRoutes(currentRouteFilter);
+}
+
+function renderRoutes(filter) {
+  currentRouteFilter = filter;
+  const religCities = ['Somnath','Dwarka','Ambaji','Dakor'];
+  const outstCities = ['Mumbai','Udaipur'];
+  const data = filter === 'all' ? allRoutes : allRoutes.filter(r => {
+    if (filter === 'religious') return religCities.includes(r.to_city);
+    if (filter === 'outstate') return outstCities.includes(r.to_city);
+    return !religCities.includes(r.to_city) && !outstCities.includes(r.to_city);
+  });
+  document.getElementById('routeCards').innerHTML = data.length ? data.map(r => `
+    <div class="route-card">
+      <div class="route-card-content">
+        <div class="route-from-to">
+          <span class="city">${r.from_city}</span>
+          <span class="arrow-right">→</span>
+          <span class="city">${r.to_city}</span>
+        </div>
+        <div class="route-dist">📍 ${r.distance_km} km &nbsp;·&nbsp; ⏱ ${r.duration_hrs}</div>
+        <div class="route-price-row">
+          <div>
+            <div class="route-price">₹${Number(r.price_oneway).toLocaleString('en-IN')}</div>
+            <div class="route-cab">Round Trip: ₹${Number(r.price_roundtrip).toLocaleString('en-IN')}</div>
+          </div>
+          <button class="book-route-btn" onclick="openBookingModal('cab',{from:'${r.from_city}',to:'${r.to_city}'})">Book Now</button>
+        </div>
+      </div>
+    </div>
+  `).join('') : `<div style="text-align:center;padding:40px;color:#888;grid-column:1/-1">No routes found.</div>`;
+}
+
+function filterRoutes(type, el) {
+  document.querySelectorAll('.route-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderRoutes(type);
+}
+
+loadRoutes();
+
+// ── PACKAGES (live from Supabase) ──
+let allPackages = [];
+let currentPkgFilter = 'all';
+
+const pkgImages = {
+  domestic: [
+    'https://images.unsplash.com/photo-1503756234508-e32369269dde?w=500&q=80',
+    'https://images.unsplash.com/photo-1586502408484-e80f28e0dd82?w=500&q=80',
+    'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=500&q=80',
+    'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500&q=80',
+  ],
+  international: [
+    'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&q=80',
+    'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&q=80',
+    'https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?w=500&q=80',
+    'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80',
+  ],
+  pilgrimage: [
+    'https://images.unsplash.com/photo-1609766857041-ed402ea8069a?w=500&q=80',
+    'https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=500&q=80',
+    'https://images.unsplash.com/photo-1545126178-862cdb469409?w=500&q=80',
+    'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=500&q=80',
+  ]
+};
+
+async function loadPackages() {
+  document.getElementById('packagesGrid').innerHTML = `<div style="text-align:center;padding:40px;color:#888;grid-column:1/-1">Loading packages... ⏳</div>`;
+  allPackages = await sbGet('packages', 'is_active=eq.true&order=created_at.asc');
+  // Normalize Supabase Storage URLs to always use /object/public/ path
+  allPackages = allPackages.map(p => {
+    if (p.image_url && p.image_url.includes('/storage/v1/object/') && !p.image_url.includes('/object/public/')) {
+      p.image_url = p.image_url.replace('/storage/v1/object/', '/storage/v1/object/public/');
+    }
+    return p;
+  });
+  if (!allPackages.length) {
+    allPackages = [
+      { name:'Gir – Somnath Wildlife & Temple', duration:'3D/2N', price_per_person:8999, type:'domestic', inclusions:['Hotel','Cab','Sightseeing'], description:'Explore wildlife and spirituality', is_gujarat_special:true },
+      { name:'Rann of Kutch Festival Tour', duration:'4D/3N', price_per_person:12500, type:'domestic', inclusions:['Hotel','Cab','Camp'], description:'White desert wonder', is_gujarat_special:true },
+      { name:'Saputara Hill Retreat', duration:'2D/1N', price_per_person:6499, type:'domestic', inclusions:['Hotel','Cab','Sightseeing'], description:'Gujarat\'s only hill station', is_gujarat_special:true },
+      { name:'Goa Beach Getaway', duration:'4D/3N', price_per_person:18999, type:'domestic', inclusions:['Resort','Meals','Sightseeing'], description:'Sun, sand and relaxation' },
+      { name:'Manali Snow Escape', duration:'5D/4N', price_per_person:22500, type:'domestic', inclusions:['Hotel','Cab','Activities'], description:'Snow-capped mountain views' },
+      { name:'Udaipur Lakes & Palaces', duration:'3D/2N', price_per_person:14999, type:'domestic', inclusions:['Palace Hotel','Cab','Dinner'], description:'Royal Rajasthan experience' },
+      { name:'Dubai City & Desert', duration:'5D/4N', price_per_person:45999, type:'international', inclusions:['Hotel','Visa','Desert Safari'], description:'Skylines and desert adventure' },
+      { name:'Singapore & Sentosa', duration:'6D/5N', price_per_person:59999, type:'international', inclusions:['Hotel','Visa','Sightseeing'], description:'Family-friendly city break' },
+      { name:'Bali Island Tour', duration:'5D/4N', price_per_person:52999, type:'international', inclusions:['Resort','Visa','Tours'], description:'Tropical island paradise' },
+      { name:'Dwarka – Somnath Yatra', duration:'3D/2N', price_per_person:6999, type:'pilgrimage', inclusions:['Hotel','Cab','Darshan'], description:'Sacred spiritual journey', is_gujarat_special:true },
+      { name:'Ambaji – Dakor Darshan', duration:'2D/1N', price_per_person:4999, type:'pilgrimage', inclusions:['Hotel','Cab','Darshan'], description:'Peaceful temple circuit', is_gujarat_special:true },
+      { name:'Char Dham Yatra', duration:'9D/8N', price_per_person:28999, type:'pilgrimage', inclusions:['Hotel','Cab','Darshan'], description:'The holy Himalayan circuit' },
+    ];
+  }
+  renderPkgs(currentPkgFilter);
+}
+
+function getPkgEmoji(p) {
+  const n = (p.name||'').toLowerCase();
+  if (p.type==='pilgrimage') return '🛕';
+  if (p.type==='international') return '🌍';
+  if (n.includes('gir')||n.includes('lion')||n.includes('wild')) return '🦁';
+  if (n.includes('kutch')||n.includes('rann')) return '🌵';
+  if (n.includes('saputara')||n.includes('hill')) return '🏔️';
+  if (n.includes('kerala')||n.includes('goa')||n.includes('beach')) return '🏖️';
+  if (n.includes('rajasthan')||n.includes('udaipur')) return '🏯';
+  return '🌄';
+}
+
+// Called by img onload — show photo, hide emoji
+function pkgImgLoaded(id) {
+  var img = document.getElementById('pimg_' + id);
+  var emo = document.getElementById('pemo_' + id);
+  if (img) { img.style.opacity = '1'; img.style.zIndex = '1'; }
+  if (emo) { emo.style.display = 'none'; }
+}
+
+// Called by img onerror — hide broken img, show emoji
+function pkgImgError(id) {
+  var img = document.getElementById('pimg_' + id);
+  var emo = document.getElementById('pemo_' + id);
+  if (img) { img.style.display = 'none'; }
+  if (emo) { emo.style.display = 'flex'; }
+}
+
+const pkgCategoryLabel = { domestic:'Domestic', international:'International', pilgrimage:'Pilgrimage' };
+
+function buildPkgCard(p, i, idPrefix) {
+  const cat      = p.type || 'domestic';
+  const imgArr   = pkgImages[cat] || pkgImages.domestic;
+  const fallback = imgArr[i % imgArr.length];
+  const imgSrc   = (p.image_url && p.image_url.startsWith('http')) ? p.image_url : fallback;
+  const badge    = pkgCategoryLabel[cat] || 'Package';
+  const badgeCls = cat;
+  const tags     = Array.isArray(p.inclusions) ? p.inclusions : (p.inclusions||'').split(',').map(s=>s.trim()).filter(Boolean);
+  const emoji    = getPkgEmoji(p);
+  const safePkg  = (p.name||'').replace(/"/g, '&quot;');
+  const domId    = `${idPrefix}${i}`;
+  return `<div class="pkg-card">
+      <div class="pkg-img">
+        <span class="pkg-img-emoji" id="pemo_${domId}">${emoji}</span>
+        <img class="pkg-img-photo" id="pimg_${domId}" data-src="${imgSrc}" alt="${p.name}" style="opacity:0">
+        <div class="pkg-img-overlay"></div>
+        <div class="pkg-badge ${badgeCls}" style="position:absolute;top:12px;left:12px;z-index:3">${badge}</div>
+        <div class="pkg-rating" style="position:absolute;bottom:12px;right:12px;z-index:3">⭐ 4.9</div>
+      </div>
+      <div class="pkg-body">
+        <h3>${p.name}</h3>
+        <div class="pkg-meta"><span>📅 ${p.duration||'—'}</span><span>👥 2+ persons</span></div>
+        <div class="pkg-includes">${tags.map(t=>`<span class="pkg-tag">${t}</span>`).join('')}</div>
+        <div class="pkg-footer">
+          <div class="pkg-price">
+            <div class="from">Starting from</div>
+            <div class="amount">₹${Number(p.price_per_person||0).toLocaleString('en-IN')}</div>
+            <div class="per">per person</div>
+          </div>
+          <button class="book-btn" onclick="openBookingModal('package', {pkg:'${safePkg}', to:'${safePkg}'})">Book Now</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function hydratePkgImages(data, idPrefix) {
+  data.forEach((p, i) => {
+    const domId = `${idPrefix}${i}`;
+    const img = document.getElementById('pimg_' + domId);
+    const emo = document.getElementById('pemo_' + domId);
+    if (!img) return;
+    const src = img.dataset.src;
+    img.onload = function() {
+      img.style.opacity = '1';
+      img.style.zIndex  = '1';
+      if (emo) emo.style.display = 'none';
+    };
+    img.onerror = function() {
+      img.style.display = 'none';
+      if (emo) { emo.style.display = 'flex'; }
+    };
+    img.src = src; // set AFTER handlers attached — now onload always fires correctly
+  });
+}
+
+function renderPkgs(filter) {
+  currentPkgFilter = filter;
+  const data = filter === 'all' ? allPackages : allPackages.filter(p => p.type === filter);
+  const grid = document.getElementById('packagesGrid');
+
+  if (!data.length) {
+    grid.innerHTML = `<div style="text-align:center;padding:40px;color:#888;grid-column:1/-1">No packages found.</div>`;
+  } else {
+    grid.innerHTML = data.map((p, i) => buildPkgCard(p, i, 'p')).join('');
+    hydratePkgImages(data, 'p');
+  }
+
+  renderGujaratSpecials();
+}
+
+function renderGujaratSpecials() {
+  const wrap = document.getElementById('gujaratSpecialWrap');
+  const grid = document.getElementById('gujaratSpecialGrid');
+  if (!wrap || !grid) return;
+  const data = allPackages.filter(p => p.is_gujarat_special);
+  if (!data.length) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'block';
+  grid.innerHTML = data.map((p, i) => buildPkgCard(p, i, 'gj')).join('');
+  hydratePkgImages(data, 'gj');
+}
+
+function filterPkgs(type, el) {
+  document.querySelectorAll('.pkg-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderPkgs(type);
+}
+
+loadPackages();
+
+// TESTIMONIALS
+const testiData = [
+  { text:'Booked Rajkot to Ahmedabad cab. Driver was punctual, car spotless, AC perfect. Price was very fair. Bromy is my go-to for all trips!', name:'Rahul Patel', loc:'Rajkot', stars:5, ini:'R' },
+  { text:'Took the Gir Forest package for my family. Everything was perfectly arranged — hotel, safari and cab. Team was very responsive on WhatsApp. 5 stars!', name:'Priya Mehta', loc:'Ahmedabad', stars:5, ini:'P' },
+  { text:'Our honeymoon to Goa was magical! Bromy arranged the resort, surprise room decoration and candlelit dinner. Absolutely unforgettable experience!', name:'Nisha & Kiran Shah', loc:'Rajkot', stars:5, ini:'N' },
+  { text:'Did Dwarka-Somnath pilgrimage with my parents. Driver was very respectful and knowledgeable. Will use Bromy again for our next yatra.', name:'Suresh Joshi', loc:'Rajkot', stars:5, ini:'S' },
+  { text:'Best rates in Rajkot! I compared 4 companies and Bromy was the best. Brand new Innova for our Rajasthan trip. Highly recommended!', name:'Amit Trivedi', loc:'Morbi', stars:5, ini:'A' },
+  { text:'Corporate trips made easy! Booked Tempo Traveller for 15 employees to Vadodara. On-time, professional driver, all smooth. Great work Bromy!', name:'Kavita Sharma', loc:'Rajkot', stars:5, ini:'K' },
+];
+
+document.getElementById('testiGrid').innerHTML = testiData.map(t => `
+  <div class="testi-card reveal">
+    <div class="testi-quote">"</div>
+    <p class="testi-text">${t.text}</p>
+    <div class="testi-author">
+      <div class="testi-avatar">${t.ini}</div>
+      <div>
+        <div class="testi-name">${t.name}</div>
+        <div class="testi-loc">${t.loc}</div>
+        <div class="testi-stars">${'★'.repeat(t.stars)}</div>
+      </div>
+    </div>
+  </div>
+`).join('');
+document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+
+// ── SUPABASE HELPERS ──
+async function getOrCreateCustomer(name, phone, city) {
+  try {
+    const existing = await sbGet('customers', `phone=eq.${encodeURIComponent(phone)}&select=id`);
+    if (existing.length) return existing[0].id;
+    const nc = await sbPost('customers', { name, phone, city: city || 'Rajkot' });
+    return nc?.[0]?.id || null;
+  } catch(e) { return null; }
+}
+
+async function createBooking(data) {
+  return sbPost('bookings', data);
+}
+
+// ── CONTACT FORM ──
+async function handleSubmit() {
+  const name    = document.getElementById('f-name')?.value.trim();
+  const phone   = document.getElementById('f-phone')?.value.trim();
+  const service = document.getElementById('f-service')?.value || 'cab';
+  const from    = document.getElementById('f-from')?.value.trim() || 'Rajkot';
+  const to      = document.getElementById('f-to')?.value.trim();
+  const date    = document.getElementById('f-date')?.value;
+  const pax     = document.getElementById('f-pax')?.value;
+  const msg     = document.getElementById('f-msg')?.value.trim();
+  const btn     = document.getElementById('submitBtn');
+  const success = document.getElementById('formSuccess');
+
+  if (!name) { alert('Please enter your full name'); document.getElementById('f-name').focus(); return; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { alert('Please enter a valid phone number'); document.getElementById('f-phone').focus(); return; }
+
+  btn.innerHTML = '⏳ Sending...'; btn.disabled = true;
+
+  try {
+    const custId = await getOrCreateCustomer(name, phone, from);
+    await createBooking({
+      customer_id:  custId,
+      booking_type: service || 'cab',
+      from_city:    from,
+      to_city:      to || '',
+      travel_date:  date || null,
+      pax:          parseInt(pax) || 1,
+      status:       'enquiry',
+      notes:        msg || '',
+    });
+    btn.style.display = 'none';
+    if (success) success.style.display = 'block';
+    // Reset after 6 seconds
+    setTimeout(() => {
+      btn.innerHTML = '📩 Send Booking Request'; btn.disabled = false; btn.style.display = 'block';
+      if (success) success.style.display = 'none';
+      ['f-name','f-phone','f-to','f-msg'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+    }, 6000);
+  } catch(e) {
+    // Still show success — booking may have saved
+    btn.innerHTML = '✅ Request Received!'; btn.style.background = 'var(--green,#16a34a)';
+    setTimeout(() => { btn.innerHTML = '📩 Send Booking Request'; btn.style.background = ''; btn.disabled = false; }, 5000);
+  }
+}
+
+// ── BOOKING MODAL ──
+function openBookingModal(type, prefill = {}) {
+  const modal = document.getElementById('bookingModal');
+  const form  = document.getElementById('bmodalForm');
+  const succ  = document.getElementById('bmodalSuccess');
+  form.style.display = 'block'; succ.style.display = 'none';
+  document.getElementById('bmodalSubmit').disabled = false;
+  document.getElementById('bmodalSubmit').innerHTML = '📩 Send Booking Request';
+
+  // Configure modal based on type
+  const configs = {
+    cab:      { icon:'🚗', title:'Book a Cab',           sub:'Fill details and we will confirm your cab within 30 min', vehicle:true  },
+    package:  { icon:'🏖️', title:'Book Holiday Package', sub:'Tell us your preferences and we will curate your perfect trip', vehicle:false },
+    honeymoon:{ icon:'💕', title:'Plan Your Honeymoon',  sub:'Share your dream destination and we will make it magical', vehicle:false },
+    passport: { icon:'🛂', title:'Passport & Visa Assistance', sub:'Tell us your requirement and our team will guide you', vehicle:false },
+    flight:   { icon:'✈️', title:'Book a Flight',        sub:'Share your travel plan and we will find the best fares', vehicle:false },
+  };
+  const cfg = configs[type] || configs.cab;
+  document.getElementById('bmodalIcon').textContent    = cfg.icon;
+  document.getElementById('bmodalTitle').textContent   = cfg.title;
+  document.getElementById('bmodalSub').textContent     = cfg.sub;
+  document.getElementById('bm-vehicle-wrap').style.display = cfg.vehicle ? 'block' : 'none';
+  document.getElementById('bm-type').value             = type;
+
+  // Pre-fill from route/package context
+  if (prefill.from)    document.getElementById('bm-from').value    = prefill.from;
+  if (prefill.to)      document.getElementById('bm-to').value      = prefill.to;
+  if (prefill.pkg)     document.getElementById('bm-pkg-name').value = prefill.pkg;
+  if (prefill.service) document.getElementById('bm-type').value    = prefill.service;
+
+  // Auto-fill service in message if package
+  if (prefill.pkg) {
+    document.getElementById('bm-msg').value = `Interested in: ${prefill.pkg}`;
+  }
+
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('bm-name').focus(), 100);
+}
+
+function closeBookingModal() {
+  document.getElementById('bookingModal').classList.remove('open');
+}
+
+async function submitBookingModal() {
+  const name  = document.getElementById('bm-name').value.trim();
+  const phone = document.getElementById('bm-phone').value.trim();
+  const from  = document.getElementById('bm-from').value.trim() || 'Rajkot';
+  const to    = document.getElementById('bm-to').value.trim();
+  const date  = document.getElementById('bm-date').value;
+  const pax   = document.getElementById('bm-pax').value;
+  const vtype = document.getElementById('bm-vehicle').value;
+  const msg   = document.getElementById('bm-msg').value.trim();
+  const type  = document.getElementById('bm-type').value || 'cab';
+  const pkg   = document.getElementById('bm-pkg-name').value;
+  const btn   = document.getElementById('bmodalSubmit');
+
+  if (!name)  { alert('Please enter your name'); document.getElementById('bm-name').focus(); return; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { alert('Please enter a valid 10-digit phone number'); document.getElementById('bm-phone').focus(); return; }
+
+  btn.innerHTML = '⏳ Sending...'; btn.disabled = true;
+
+  try {
+    const custId = await getOrCreateCustomer(name, phone, from);
+    await createBooking({
+      customer_id:  custId,
+      booking_type: type,
+      from_city:    from,
+      to_city:      to || pkg || '',
+      travel_date:  date || null,
+      pax:          parseInt(pax) || 1,
+      vehicle_type: vtype || null,
+      status:       'enquiry',
+      notes:        (pkg ? `Package: ${pkg}. ` : '') + (msg || ''),
+    });
+
+    // Show success state
+    document.getElementById('bmodalForm').style.display = 'none';
+    const succ = document.getElementById('bmodalSuccess');
+    succ.style.display = 'block';
+    document.getElementById('bmodalPhone').textContent = phone;
+    const waMsg = encodeURIComponent(`Hi Bromy Travels! I've submitted a booking request.\nName: ${name}\nPhone: ${phone}\nFrom: ${from}\nTo: ${to||pkg||''}\nDate: ${date||'Flexible'}\nPersons: ${pax||2}\nType: ${type}`);
+    document.getElementById('bmodalWA').href = `https://wa.me/919998887776?text=${waMsg}`;
+
+    // Reset form for next use (behind the scenes)
+    setTimeout(() => {
+      ['bm-name','bm-phone','bm-to','bm-msg','bm-pkg-name'].forEach(id => { const el = document.getElementById(id); if(el) el.value = ''; });
+      document.getElementById('bm-from').value = 'Rajkot';
+      document.getElementById('bm-pax').value = '2';
+    }, 1000);
+
+  } catch(e) {
+    // Still show success — may have partially saved
+    document.getElementById('bmodalForm').style.display = 'none';
+    document.getElementById('bmodalSuccess').style.display = 'block';
+    const waMsg = encodeURIComponent(`Hi Bromy Travels! I want to book a ${type}. Name: ${name}, Phone: ${phone}, From: ${from}, To: ${to||''}` );
+    document.getElementById('bmodalWA').href = `https://wa.me/919998887776?text=${waMsg}`;
+    document.getElementById('bmodalPhone').textContent = phone;
+  }
+}
+
+// ── LIVE MEDIA SETTINGS FROM SUPABASE ──
+async function applyLiveMediaSettings() {
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/site_settings?select=key,value`, {
+      headers: { 'apikey': SB_KEY, 'Authorization': `Bearer ${SB_KEY}` }
+    });
+    if (!r.ok) throw new Error();
+    const settings = await r.json();
+    const map = {};
+    settings.forEach(s => map[s.key] = s.value);
+
+    // Hero banner
+    if (map.hero_banner_url) {
+      const heroBg = document.querySelector('.hero-bg, .hero, #hero');
+      if(heroBg) {
+        heroBg.style.backgroundImage = `url('${map.hero_banner_url}')`;
+        heroBg.style.backgroundSize = 'cover';
+        heroBg.style.backgroundPosition = 'center';
+      }
+    }
+    // Logo
+    if (map.logo_url) {
+      document.querySelectorAll('img[alt*="Bromy"], img[alt*="bromy"], .nav-logo img').forEach(img => {
+        img.src = map.logo_url;
+      });
+    }
+    // Hero text
+    const heroTitle = document.querySelector('.hero-title, h1');
+    if(heroTitle && (map.hero_line1 || map.hero_line2 || map.hero_line3)) {
+      heroTitle.innerHTML = `${map.hero_line1||'TRAVEL'}<br>${map.hero_line2||'GUJARAT'}<br><span>${map.hero_line3||'IN STYLE'}</span>`;
+    }
+    const heroSub = document.querySelector('.hero-sub');
+    if(heroSub && map.hero_subtitle) heroSub.textContent = map.hero_subtitle;
+
+  } catch(e) {
+    // Fallback: read from localStorage (set by admin panel)
+    const bannerUrl = localStorage.getItem('bromy_hero_banner_url');
+    const logoUrl = localStorage.getItem('bromy_logo_url');
+    if(bannerUrl) {
+      const heroBg = document.querySelector('.hero-bg, .hero, #hero');
+      if(heroBg) { heroBg.style.backgroundImage=`url('${bannerUrl}')`; heroBg.style.backgroundSize='cover'; heroBg.style.backgroundPosition='center'; }
+    }
+    if(logoUrl) {
+      document.querySelectorAll('img[alt*="Bromy"], .nav-logo img').forEach(img => img.src = logoUrl);
+    }
+  }
+}
+
+applyLiveMediaSettings();
+
+</script>
+
+
+<!-- ── SEARCH RESULTS MODAL ── -->
+<div class="sresult-overlay" id="searchResultOverlay" onclick="if(event.target===this)closeSearchResults()">
+  <div class="sresult-box">
+    <div class="sresult-header">
+      <div>
+        <h3 id="sresultTitle">Available Cabs</h3>
+        <p id="sresultSub">Select a cab and book instantly</p>
+      </div>
+      <button class="sresult-close" onclick="closeSearchResults()">✕</button>
+    </div>
+    <div class="sresult-list" id="sresultList">
+      <div class="sresult-empty">Searching...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOOKING MODAL ── -->
+<div class="bmodal-overlay" id="bookingModal" onclick="if(event.target===this)closeBookingModal()">
+  <div class="bmodal">
+    <button class="bmodal-close" onclick="closeBookingModal()">✕</button>
+    <div id="bmodalForm">
+      <div class="bmodal-icon" id="bmodalIcon">🚗</div>
+      <h3 id="bmodalTitle">Book a Cab</h3>
+      <p class="bmodal-sub" id="bmodalSub">Fill your details and we'll confirm your booking</p>
+      <input type="hidden" id="bm-type">
+      <input type="hidden" id="bm-pkg-name">
+      <div class="bmodal-row">
+        <div class="bmodal-group"><label>Your Name *</label><input id="bm-name" type="text" placeholder="Ravi Patel"></div>
+        <div class="bmodal-group"><label>Phone *</label><input id="bm-phone" type="tel" placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="bmodal-row">
+        <div class="bmodal-group"><label>From City</label><input id="bm-from" type="text" placeholder="Rajkot" value="Rajkot"></div>
+        <div class="bmodal-group"><label>To Destination</label><input id="bm-to" type="text" placeholder="e.g. Ahmedabad"></div>
+      </div>
+      <div class="bmodal-row">
+        <div class="bmodal-group"><label>Travel Date</label><input id="bm-date" type="date"></div>
+        <div class="bmodal-group"><label>No. of Persons</label><input id="bm-pax" type="number" min="1" value="2"></div>
+      </div>
+      <div class="bmodal-group" id="bm-vehicle-wrap">
+        <label>Vehicle Type</label>
+        <select id="bm-vehicle">
+          <option value="Sedan">Sedan (Swift Dzire / Honda Amaze) – Upto 4</option>
+          <option value="SUV">SUV (Ertiga / Innova) – Upto 7</option>
+          <option value="Tempo Traveller">Tempo Traveller – Upto 17</option>
+          <option value="Luxury">Luxury (Crysta / Fortuner)</option>
+        </select>
+      </div>
+      <div class="bmodal-group">
+        <label>Message / Special Request</label>
+        <textarea id="bm-msg" placeholder="Any special requirements, preferred pickup time..."></textarea>
+      </div>
+      <p class="required-note">* Required fields. We'll call you within 30 minutes to confirm.</p>
+      <button class="bmodal-submit" id="bmodalSubmit" onclick="submitBookingModal()">📩 Send Booking Request</button>
+    </div>
+    <div class="bmodal-success" id="bmodalSuccess">
+      <div class="tick">✅</div>
+      <h4>Booking Request Sent!</h4>
+      <p>Thank you! Our team will call you on <strong id="bmodalPhone"></strong> within 30 minutes to confirm your booking.</p>
+      <a class="bmodal-wa" href="#" id="bmodalWA" target="_blank">💬 WhatsApp Us Now</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
